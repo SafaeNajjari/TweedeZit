@@ -1,3 +1,5 @@
+
+//Ik had al meerderekeren gepusht op een andere repositary...
 "use strict";
 import context from "./scripts/context.js";
 import * as Utils from "./scripts/utils.js";
@@ -91,6 +93,7 @@ function background() {
 }
 
 function letNoirodeMove() {
+	
 	// random directions
 	let hd = -1;
 	let vd = -1;
