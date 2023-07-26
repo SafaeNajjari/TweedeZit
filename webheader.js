@@ -37,25 +37,6 @@ function click(e) {
 }
 
 
-
-function draw(x,y) {
-    if (isPlaying) {
-        context.fillStyle = "white";
-        context.fillRect(0, 0, width, height);
-        context.fillStyle = "blue";
-        Utils.fillCircle(x, y, size);
-        x += hSpeed;
-        y += vSpeed;
-        if (x >= width - size || x <= size) {
-            hSpeed *= -1;
-        }
-        if (y >= height - size || y <= size) {
-            vSpeed *= -1;
-        }
-        requestAnimationFrame(draw);
-    }
-}
-
 /**
  *
  * @param {MouseEvent} eventData
@@ -92,25 +73,7 @@ function background() {
 	context.fillText("Safae Najjari", width / 2, height / 2 + 24);
 }
 
-function letNoirodeMove() {
-	
-	// random directions
-	let hd = -1;
-	let vd = -1;
-	if (Utils.randomNumber(0, 1) == 0) {
-		hd = 1;
-	}
-	if (Utils.randomNumber(0, 1) == 0) {
-		vd = 1;
-	}
-	let noirode = {
-		xpos: Utils.randomNumber(0, width),
-		ypos: Utils.randomNumber(0, height),
-		hdir: hd,
-		vdir: vd,
-	};
-	noirodes.push(noirode);
-}
+
 function drawNoirode() {
 	for (let i = 0; i < 12; i++) {
 		let yrondom = Utils.randomNumber(-80, 10);
