@@ -16,7 +16,10 @@ update();
 function update() {
     frameCount++;
     requestAnimationFrame(update);
+
 }
+background();// pour faire en sort que le background sois la automatiquement depuis le debut (mettre en dehors du update)
+drawNoirode();// pour faire en sort que le background sois la automatiquement depuis le debut
 
 
 window.onmousemove = draw;
@@ -49,18 +52,16 @@ function click(e) {
  */
 
 
-function setup(eventData) {
-	background();
-}
+
 
 function draw (eventData){
 	let x = eventData.pageX;
 	let y = eventData.pageY;
 
-	setup();
+	background();
 	drawTotoro(x, y);
 	drawNoirode();
-	draw(x,y);
+	
 };
 
 function background() {
