@@ -6,11 +6,6 @@ import * as Utils from "./scripts/utils.js";
 let width = context.canvas.width; //with= X (largeur)
 let height = context.canvas.height;// height= Y (hauteur)
 let frameCount = 0;
-let mouseX = 0;
-let mouseY = 0;
-let noirodes = [];
-let hSpeed = 15;
-let vSpeed = 15;
 let isPlaying = true;
 update();
 function update() {
@@ -45,13 +40,6 @@ function click(e) {
  *
  * @param {MouseEvent} eventData
  */
-
-/**
- *
- * @param {KeyboardEventEvent} eventData
- */
-
-
 
 
 function draw (eventData){
