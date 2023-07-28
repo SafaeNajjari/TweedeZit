@@ -3,8 +3,8 @@
 "use strict";
 import context from "./scripts/context.js";
 import * as Utils from "./scripts/utils.js";
-let width = context.canvas.width;
-let height = context.canvas.height;
+let width = context.canvas.width; //with= X (largeur)
+let height = context.canvas.height;// height= Y (hauteur)
 let frameCount = 0;
 let mouseX = 0;
 let mouseY = 0;
@@ -13,15 +13,16 @@ let hSpeed = 15;
 let vSpeed = 15;
 let isPlaying = true;
 update();
-
 function update() {
-	frameCount++;
-	requestAnimationFrame(update);
+    frameCount++;
+    requestAnimationFrame(update);
 }
 
-window.onmousemove = drawTotoro;
+
+window.onmousemove = draw;
 
 document.onmousedown = click;
+
 
 /**
  * 
@@ -52,17 +53,15 @@ function setup(eventData) {
 	background();
 }
 
-window.addEventListener("mousemove", function (event) {
-	let x = event.pageX;
-	let y = event.pageY;
+function draw (eventData){
+	let x = eventData.pageX;
+	let y = eventData.pageY;
 
 	setup();
 	drawTotoro(x, y);
 	drawNoirode();
-	letNoirodeMove();
-	requestAnimationFrame();
 	draw(x,y);
-});
+};
 
 function background() {
 	context.fillStyle = "Grey";
@@ -76,19 +75,18 @@ function background() {
 
 function drawNoirode() {
 	for (let i = 0; i < 12; i++) {
-		let yrondom = Utils.randomNumber(-80, 10);
-		let xrondom = Utils.randomNumber(-10, 20);
-		let y = 720 + i * yrondom;
-		let x = width / 2 + i * xrondom;
+		
+		let y = Utils.randomNumber (0,height);
+		let x = Utils.randomNumber(0, width);
 		context.fillStyle = "#000";
-		Utils.fillEllipse(70, 90, 50, 50);
+		Utils.fillEllipse(x+70, y+90, 50, 50);
 		context.fillStyle = "#000";
 		context.fillStyle = "#FFF";
-		Utils.fillEllipse(50, 80, 18, 20);
-		Utils.fillEllipse(90, 80, 18, 20);
+		Utils.fillEllipse(x+50, y+80, 18, 20);
+		Utils.fillEllipse(x+90, y+80, 18, 20);
 		context.fillStyle = "#000";
-		Utils.fillEllipse(50, 80, 8, 8);
-		Utils.fillEllipse(90, 80, 8, 8);
+		Utils.fillEllipse(x+50, y+80, 8, 8);
+		Utils.fillEllipse(x+90, y+80, 8, 8);
 	}
 }
 
