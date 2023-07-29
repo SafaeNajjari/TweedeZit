@@ -7,8 +7,10 @@ let width = context.canvas.width; //with= X (largeur)
 let height = context.canvas.height;// height= Y (hauteur)
 let frameCount = 0;
 let isPlaying = true;
+let size= 50;
 
 window.onmousemove = getMouseData;
+window.onclick= changeNoirodeSize;
 function getMouseData(eventData) {
 	var bounds = canvas.getBoundingClientRect();
 	mouseX = eventData.clientX - bounds.left;
@@ -71,19 +73,16 @@ function background() {
 
 
 function drawNoirode() {
-	context.fillStyle = "white";
-	context.textAlign = "center";
-	context.font = "bold 48pt Arial";
-	context.fillText("Safae Najjari", width / 2, height / 2 + 24);
+	
 	for (let i = 0; i < 8; i++) {
 		
 		let noirode={// object voor noirode
 			x: 100 + i*200,
-			y: 100
+			y: 140
 		};
 		
 			context.fillStyle = "#000";
-			Utils.fillEllipse(noirode.x+70, noirode.y+90, 50, 50);
+			Utils.fillEllipse(noirode.x+70, noirode.y+90, size, size);
 			context.fillStyle = "#000";
 			context.fillStyle = "#FFF";
 			Utils.fillEllipse(noirode.x+50, noirode.y+80, 18, 20);
@@ -91,6 +90,16 @@ function drawNoirode() {
 			context.fillStyle = "#000";
 			Utils.fillEllipse(noirode.x+50, noirode.y+80, 8, 8);
 			Utils.fillEllipse(noirode.x+90, noirode.y+80, 8, 8);
+	}
+	context.fillStyle = "white";
+	context.textAlign = "center";
+	context.font = "bold 48pt Arial";
+	context.fillText("Safae Najjari", width / 2, height / 2 + 24);
+}
+function changeNoirodeSize(){
+	if (size==50 ) { size=60
+	}
+	else{ size=50
 	}
 }
 
