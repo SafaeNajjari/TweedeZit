@@ -5,54 +5,18 @@ import context from "./scripts/context.js";
 import * as Utils from "./scripts/utils.js";
 let width = context.canvas.width; //with= X (largeur)
 let height = context.canvas.height;// height= Y (hauteur)
-let frameCount = 0;
-let isPlaying = true;
 let size= 50;
-
-window.onmousemove = getMouseData;
+let noirode = [1, 2, 3, 4, 5, 6, 7, 8];
+window.onmousemove = draw;
 window.onclick= changeNoirodeSize;
-function getMouseData(eventData) {
-	var bounds = canvas.getBoundingClientRect();
-	mouseX = eventData.clientX - bounds.left;
-	mouseY = eventData.clientY - bounds.top;
-}
 
-update();
-function update() {
-    frameCount++;
-    requestAnimationFrame(update);
-	
-
-}
 background();// pour faire en sort que le background sois la automatiquement depuis le debut (mettre en dehors du update)
 drawNoirode();// pour faire en sort que le background sois la automatiquement depuis le debut
-
-
-window.onmousemove = draw;
-
-document.onmousedown = click;
-
-
-/**
- * 
- * @param {MouseEvent} e 
- */
-function click(e) {
-    console.log(e.pageX + " " + e.pageY);
-    if (Utils.calculateDistance(e.pageX, e.pageY, x, y) < size) {
-        isPlaying = false;
-        context.fillStyle = "red";
-        Utils.fillCircle(e.pageX, e.pageY, size / 2);
-	
-    }
-}
-
 
 /**
  *
  * @param {MouseEvent} eventData
  */
-
 
 function draw (eventData){
 	let x = eventData.pageX;
@@ -70,7 +34,6 @@ function background() {
 	
 	
 }
-
 
 function drawNoirode() {
 	
@@ -91,9 +54,9 @@ function drawNoirode() {
 			Utils.fillEllipse(noirode.x+50, noirode.y+80, 8, 8);
 			Utils.fillEllipse(noirode.x+90, noirode.y+80, 8, 8);
 	}
-	context.fillStyle = "white";
+	context.fillStyle = "LightGray";
 	context.textAlign = "center";
-	context.font = "bold 48pt Arial";
+	context.font = "bold 60pt  arial,Charcoal";
 	context.fillText("Safae Najjari", width / 2, height / 2 + 24);
 }
 function changeNoirodeSize(){
