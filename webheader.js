@@ -7,10 +7,19 @@ let width = context.canvas.width; //with= X (largeur)
 let height = context.canvas.height;// height= Y (hauteur)
 let frameCount = 0;
 let isPlaying = true;
+
+window.onmousemove = getMouseData;
+function getMouseData(eventData) {
+	var bounds = canvas.getBoundingClientRect();
+	mouseX = eventData.clientX - bounds.left;
+	mouseY = eventData.clientY - bounds.top;
+}
+
 update();
 function update() {
     frameCount++;
     requestAnimationFrame(update);
+	
 
 }
 background();// pour faire en sort que le background sois la automatiquement depuis le debut (mettre en dehors du update)
@@ -32,6 +41,7 @@ function click(e) {
         isPlaying = false;
         context.fillStyle = "red";
         Utils.fillCircle(e.pageX, e.pageY, size / 2);
+	
     }
 }
 
@@ -55,27 +65,32 @@ function draw (eventData){
 function background() {
 	context.fillStyle = "Grey";
 	context.fillRect(0, 0, width, height);
-	context.fillStyle = "white";
-	context.textAlign = "center";
-	context.font = "bold 48pt Arial";
-	context.fillText("Safae Najjari", width / 2, height / 2 + 24);
+	
+	
 }
 
 
 function drawNoirode() {
-	for (let i = 0; i < 12; i++) {
+	context.fillStyle = "white";
+	context.textAlign = "center";
+	context.font = "bold 48pt Arial";
+	context.fillText("Safae Najjari", width / 2, height / 2 + 24);
+	for (let i = 0; i < 8; i++) {
 		
-		let y = Utils.randomNumber (0,height);
-		let x = Utils.randomNumber(0, width);
-		context.fillStyle = "#000";
-		Utils.fillEllipse(x+70, y+90, 50, 50);
-		context.fillStyle = "#000";
-		context.fillStyle = "#FFF";
-		Utils.fillEllipse(x+50, y+80, 18, 20);
-		Utils.fillEllipse(x+90, y+80, 18, 20);
-		context.fillStyle = "#000";
-		Utils.fillEllipse(x+50, y+80, 8, 8);
-		Utils.fillEllipse(x+90, y+80, 8, 8);
+		let noirode={// object voor noirode
+			x: 100 + i*200,
+			y: 100
+		};
+		
+			context.fillStyle = "#000";
+			Utils.fillEllipse(noirode.x+70, noirode.y+90, 50, 50);
+			context.fillStyle = "#000";
+			context.fillStyle = "#FFF";
+			Utils.fillEllipse(noirode.x+50, noirode.y+80, 18, 20);
+			Utils.fillEllipse(noirode.x+90, noirode.y+80, 18, 20);
+			context.fillStyle = "#000";
+			Utils.fillEllipse(noirode.x+50, noirode.y+80, 8, 8);
+			Utils.fillEllipse(noirode.x+90, noirode.y+80, 8, 8);
 	}
 }
 
